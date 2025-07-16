@@ -12,6 +12,7 @@ private let logger = Logger(
     category: "MeiliSearchController"
 )
 
+@Observable
 class MeiliSearchController {
     init(url: String, masterKey: String) {
         self.url = url
@@ -24,7 +25,7 @@ class MeiliSearchController {
     private var meilisearchProcess: Process?
     
     var isRunning: Bool {
-        meilisearchProcess?.isRunning ?? false
+        meilisearchProcess != nil
     }
 
     // MARK: - Public API

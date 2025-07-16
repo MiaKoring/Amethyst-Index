@@ -26,10 +26,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.meiliSearchController = nil
             self.meiliURL = url
             super.init()
+            print("Couldn't start meilisearch")
             return
         }
         self.meiliURL = url
         self.meiliSearchController = MeiliSearchController(url: url, masterKey: masterKey)
+        try? self.meiliSearchController?.start()
         super.init()
     }
 

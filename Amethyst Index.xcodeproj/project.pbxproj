@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A610F3752E284C33000C19C2 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A610F3742E284C33000C19C2 /* Sparkle */; };
 		A63BC1442E231488006C5CFE /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = A63BC1432E231488006C5CFE /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A63BC1442E231488006C5CFE /* KeychainAccess in Frameworks */,
+				A610F3752E284C33000C19C2 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +113,7 @@
 			name = "Amethyst Index";
 			packageProductDependencies = (
 				A63BC1432E231488006C5CFE /* KeychainAccess */,
+				A610F3742E284C33000C19C2 /* Sparkle */,
 			);
 			productName = "Amethyst Index";
 			productReference = A6E98E542E23031100709EE1 /* Amethyst Index.app */;
@@ -142,6 +145,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				A63BC1422E231488006C5CFE /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				A610F3732E284C33000C19C2 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A6E98E552E23031100709EE1 /* Products */;
@@ -306,7 +310,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68YWPYV749;
 				ENABLE_APP_SANDBOX = NO;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
@@ -352,7 +356,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 68YWPYV749;
 				ENABLE_APP_SANDBOX = NO;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
@@ -410,6 +414,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A610F3732E284C33000C19C2 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		A63BC1422E231488006C5CFE /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -421,6 +433,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A610F3742E284C33000C19C2 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A610F3732E284C33000C19C2 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
 		A63BC1432E231488006C5CFE /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A63BC1422E231488006C5CFE /* XCRemoteSwiftPackageReference "KeychainAccess" */;
