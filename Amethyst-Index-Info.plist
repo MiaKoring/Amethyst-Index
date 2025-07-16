@@ -4,6 +4,8 @@
 <dict>
 	<key>SUFeedURL</key>
 	<string>https://amethystbrowser.de/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>XEZ/ijtagAZee/6AeTIWQmBxc7hLkKttCxSXkPSn0gQ=</string>
 	<key>TeamID</key>
 	<string>$(TeamIdentifierPrefix)</string>
 </dict>
