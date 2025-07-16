@@ -33,6 +33,12 @@ struct Amethyst_IndexApp: App {
         var isRunning: Bool {
             meilisearchController?.isRunning ?? false
         }
+        var versionString: String {
+            let infoDictionary = Bundle.main.infoDictionary
+            let version = infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+            let build = infoDictionary?["CFBundleVersion"] as? String ?? ""
+            return "Amethyst Index \(version) (\(build))"
+        }
         
         var body: some View {
             Text("Running: \(isRunning ? "🟢": "🔴")")
@@ -53,6 +59,7 @@ struct Amethyst_IndexApp: App {
                 meilisearchController?.stop()
                 NSApplication.shared.terminate(self)
             }
+            Text(versionString)
         }
     }
 }
