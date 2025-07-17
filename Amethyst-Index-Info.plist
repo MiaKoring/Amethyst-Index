@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SUFeedURL</key>
-	<string>https://amethystbrowser.de/appcast.xml</string>
+	<string>https://index.downloads.amethystbrowser.de/amethyst-index/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>XEZ/ijtagAZee/6AeTIWQmBxc7hLkKttCxSXkPSn0gQ=</string>
 	<key>TeamID</key>
