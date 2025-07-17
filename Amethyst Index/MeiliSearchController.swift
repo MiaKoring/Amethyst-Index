@@ -57,6 +57,7 @@ class MeiliSearchController {
         logger.info("Meilisearch database path will be: \(meiliDbPath)")
 
         let process = Process()
+        
         process.executableURL = binaryUrl
         
         process.currentDirectoryURL = appSupportDir
@@ -73,23 +74,37 @@ class MeiliSearchController {
         process.standardError = errorPipe
 
         outputPipe.fileHandleForReading.readabilityHandler = { fileHandle in
-            if let line = String(
-                data: fileHandle.availableData,
-                encoding: .utf8
-            ) {
-                if !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    logger.debug("Meilisearch stdout: \(line)")
+            let data = fileHandle.availableData
+            
+            // Wenn data leer ist, bedeutet das End-of-File (EOF).
+            // Die Pipe wurde geschlossen (z.B. weil der Prozess beendet wurde).
+            // Wir MÜSSEN aufhören zu lauschen, um die Endlosschleife zu verhindern.
+            if data.isEmpty {
+                fileHandle.readabilityHandler = nil // Handler deaktivieren!
+                return
+            }
+            
+            if let line = String(data: data, encoding: .utf8) {
+                let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !trimmed.isEmpty {
+                    logger.debug("Meilisearch stdout: \(trimmed)")
                 }
             }
         }
 
         errorPipe.fileHandleForReading.readabilityHandler = { fileHandle in
-            if let line = String(
-                data: fileHandle.availableData,
-                encoding: .utf8
-            ) {
-                if !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    logger.error("Meilisearch stderr: \(line)")
+            let data = fileHandle.availableData
+            
+            // Dieselbe Logik für die Error-Pipe.
+            if data.isEmpty {
+                fileHandle.readabilityHandler = nil // Handler deaktivieren!
+                return
+            }
+            
+            if let line = String(data: data, encoding: .utf8) {
+                let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !trimmed.isEmpty {
+                    logger.error("Meilisearch stderr: \(trimmed)")
                 }
             }
         }

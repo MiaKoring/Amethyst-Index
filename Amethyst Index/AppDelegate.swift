@@ -5,9 +5,11 @@
 //  Created by Mia Koring on 12.07.25.
 //
 import SwiftUI
+import OSLog
 
 @Observable
 class AppDelegate: NSObject, NSApplicationDelegate {
+    static let logger = Logger(subsystem: "AppDelegate", category: "de.touchthegrass.Amethyst-Index")
     
     static let settingsGroupID: String = {
         guard let teamID = Bundle.main.object(forInfoDictionaryKey: "TeamID") as? String else { fatalError("TeamID not found")}
@@ -26,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.meiliSearchController = nil
             self.meiliURL = url
             super.init()
-            print("Couldn't start meilisearch")
+            Self.logger.error("Couldn't start meilisearch, key missing")
             return
         }
         self.meiliURL = url
@@ -43,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 try meiliSearchController?.start()
             } catch {
                 // Handle the error, e.g., by showing an alert to the user.
-                print("Failed to start Meilisearch: \(error.localizedDescription)")
+                Self.logger.error("Failed to start Meilisearch: \(error.localizedDescription)")
                 // You might want to present a fatal error alert here.
             }
         }

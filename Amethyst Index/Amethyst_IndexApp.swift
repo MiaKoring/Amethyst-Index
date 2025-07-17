@@ -8,6 +8,7 @@
 import SwiftUI
 import Sparkle
 internal import Combine
+import OSLog
 
 @main
 struct Amethyst_IndexApp: App {
@@ -46,7 +47,11 @@ struct Amethyst_IndexApp: App {
                 if isRunning {
                     meilisearchController?.stop()
                 } else {
-                    try? meilisearchController?.start()
+                    do {
+                        try meilisearchController?.start()
+                    } catch {
+                        AppDelegate.logger.error("Failed to start meilisearch with error: \(error.localizedDescription)")
+                    }
                 }
             }
             .disabled(meilisearchController == nil)
